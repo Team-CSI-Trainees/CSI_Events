@@ -1,10 +1,15 @@
-const events = require("./events");
+const presentevents= require("../models/presentevents");
 
 const posteventDetails=async(req,res)=>{
-   const role=req.body.role;
-   const eventdetail= events(role);
-   const detail=await eventdetail.find({});
-   return res.status(200).json(detail);   
+   try{
+      const detail=await presentevents.find({});
+      return res.status(200).json(detail);
 
-}
+   }
+   catch (error) {
+      res.status(400).json(error.message);
+    }
+  }; 
+
+
 module.exports=posteventDetails

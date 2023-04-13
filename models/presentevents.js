@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const Presentevents_Schema = new mongoose.Schema(
     {
-        title : {type: String},
-        description : {type : String},
-        image : {type: String}
+        title : {type: String , require: true,},
+        description : {type : String , require: true,},
+        startingDate : {type : Date , require: true},
+        endingDate : {type : Date , require: true},
+        image : {type: String , require: true,}
     },
 
     { timestamps : true }

@@ -8,11 +8,16 @@ app.use(express.urlencoded({ extended: false }));
 const mongoose = require("mongoose");
 const router = require("./routes/multerRoutes");
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb+srv://Aanirudh24:Aanirudh24@cluster0.vfse9i8.mongodb.net/?retryWrites=true&w=majority",{ useNewUrlParser: true }).then(()=>{  console.log("Successfully connected to mongodb database")})
+mongoose
+  .connect("mongodb+srv://csi_backend:csi_backend@cluster0.lrg9luv.mongodb.net/websiteDb", { useNewUrlParser: true })
+  .then(() => {
+    console.log("Successfully connected to mongodb database");
+  }).catch((err)=>{console.log(err);});
+
 app.set('trust proxy', 1);
 app.use(cors());
 app.use("/api",router);
-const port = 3000 || process.env.PORT;
-app.listen(3000, () => {
+const port = 3005|| process.env.PORT;
+app.listen(3005, () => {
     console.log(`Sever running at ${port}`);
   });
